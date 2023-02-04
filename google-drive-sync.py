@@ -24,10 +24,10 @@ class GoogleDrive:
         self._creds, _ = google.auth.default()
 
         # pylint: disable=maybe-no-member
-        self._files_serice = build("drive", "v3", credentials=self._creds).files()
+        self._files_service = build("drive", "v3", credentials=self._creds).files()
 
     def get_modification_time(self, file_id: str) -> float:
-        file = self._files_serice.get(
+        file = self._files_service.get(
             fileId=file_id,
             fields="modifiedTime",
         ).execute()
@@ -45,7 +45,7 @@ class GoogleDrive:
     def download(self, file_id: str) -> bytes:
         logging.debug("Downloading %s", file_id)
 
-        request = self._files_serice.get_media(fileId=file_id)
+        request = self._files_service.get_media(fileId=file_id)
 
         file = io.BytesIO()
         downloader = MediaIoBaseDownload(file, request)
@@ -60,7 +60,7 @@ class GoogleDrive:
 
         media_body = MediaFileUpload(path, resumable=True)
 
-        updated_file = self._files_serice.update(
+        updated_file = self._files_service.update(
             fileId=file_id,
             body={
                 "modifiedTime": datetime.datetime.strftime(
