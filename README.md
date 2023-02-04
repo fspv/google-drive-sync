@@ -42,3 +42,9 @@ Example:
 ```
 ./google-drive-sync.py -s test.txt,1xX-XXXXXXXX_YYYYYYYY -s test2.txt,AAAAAAAAAA_BBBBBBBBBB -i 30
 ```
+
+TODO
+====
+
+[ ] Make async to support syncing many files in parallel
+[ ] Introduce inotify + subscribe to Google Drive notifications to avoid busy-waiting for changes
