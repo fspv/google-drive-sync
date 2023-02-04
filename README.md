@@ -46,5 +46,5 @@ Example:
 TODO
 ====
 
-[ ] Make async to support syncing many files in parallel
-[ ] Introduce inotify + subscribe to Google Drive notifications to avoid busy-waiting for changes
+- [ ] Make async to support syncing many files in parallel
+- [ ] Introduce inotify + subscribe to Google Drive notifications to avoid busy-waiting for changes
